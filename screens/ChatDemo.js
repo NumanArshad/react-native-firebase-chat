@@ -19,7 +19,7 @@ export function ChatDemo() {
     // },
     // {
     //   _id: 3,
-    //   text: "Hello, My name's Hieu Le.\n" + "Nice to meet you!",
+    //    text: "Hello, My name's Hieu Le.\n" + "Nice to meet you!",
     //   user: {
     //     _id: 1,
     //     name: "Name",
@@ -37,25 +37,28 @@ export function ChatDemo() {
 
   useEffect(() => {
     let updateMessages = [];
+
     messagesRef.onSnapshot((snapshot) => {
       console.log("dt is", snapshot.size);
       snapshot.docChanges().forEach((changes) => {
-//        console.log(changes.doc.data(), changes.doc.id);
+        //console.log("changes", changes.doc.data());
         // const { sentBy };
-        if (changes.type === "added") {
-          const { sentBy, sentAt, text, _id } = changes.doc.data();
-          updateMessages.unshift({
-            _id,
-            createdAt: sentAt,
-            text,
-            user: {
-              _id: sentBy,
-              name: "Name",
-              avatar: "https://placeimg.com/140/140/any",
-            },
-          });
+          if (changes.type === "added") {
+        const { sentBy, sentAt, text, _id } = changes.doc.data();
+        updateMessages.unshift({
+          _id,
+          createdAt: sentAt,
+          text,
+          user: {
+            _id: sentBy,
+            name: "Name",
+            avatar: "https://placeimg.com/140/140/any",
+          },
+        });
         }
       });
+
+      console.log("my message ", updateMessages, updateMessages?.length);
       setMessages(updateMessages);
     });
   }, []);
