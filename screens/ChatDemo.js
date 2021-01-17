@@ -43,22 +43,22 @@ export function ChatDemo() {
       snapshot.docChanges().forEach((changes) => {
         //console.log("changes", changes.doc.data());
         // const { sentBy };
-          if (changes.type === "added") {
-        const { sentBy, sentAt, text, _id } = changes.doc.data();
-        updateMessages.unshift({
-          _id,
-          createdAt: sentAt,
-          text,
-          user: {
-            _id: sentBy,
-            name: "Name",
-            avatar: "https://placeimg.com/140/140/any",
-          },
-        });
+        if (changes.type === "added") {
+          const { sentBy, sentAt, text, _id } = changes.doc.data();
+          updateMessages.unshift({
+            _id,
+            createdAt: sentAt,
+            text,
+            user: {
+              _id: sentBy,
+              name: "Name",
+              avatar: "https://placeimg.com/140/140/any",
+            },
+          });
         }
       });
 
-      console.log("my message ", updateMessages, updateMessages?.length);
+      //  console.log("my message ", updateMessages, updateMessages?.length);
       setMessages(updateMessages);
     });
   }, []);
@@ -77,6 +77,8 @@ export function ChatDemo() {
     //   GiftedChat.append(previousMessages, messages)
     // );
   }, []);
+
+  //console.log('sfhebh', messages?.length)
 
   return (
     <GiftedChat

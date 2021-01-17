@@ -174,6 +174,7 @@ export default function App() {
       try {
         userToken = await AsyncStorage.getItem("token");
         //     alert("tk"+userToken)
+        console.log("snf", userToken)
       } catch (e) {
         //        alert("get token error")
       }
