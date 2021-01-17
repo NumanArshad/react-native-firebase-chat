@@ -157,7 +157,7 @@ alert(JSON.stringify(url))
       <Button title="Upload image" onPress={uploadImage} />
   
       <Button
-        title="back to home hey pull request"
+        title="hey pull request and apk setup"
         onPress={() => navigation.navigate("home")}
       />
       <ScrollView>
