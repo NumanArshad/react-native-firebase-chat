@@ -1,8 +1,5 @@
 name: Expo Publish on Staging
-on:
-  push:
-    branches:
-      - develop
+on: [pull_request]
 jobs:
   publish:
     name: Install and publish
