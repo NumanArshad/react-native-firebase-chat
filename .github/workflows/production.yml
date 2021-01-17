@@ -17,6 +17,6 @@ jobs:
           expo-version: 4.x
           expo-token: ${{ secrets.EXPO_CLI_TOKEN }}
           expo-cache: true
-      - run: npm install
-      - run: expo install
-      - run: expo publish --release-channel production
+      - run: expo build:android
+        with:
+          msg: Apk is generated successfully!, you can [download from here](https://expo.io/@numanarshad.dev/).
