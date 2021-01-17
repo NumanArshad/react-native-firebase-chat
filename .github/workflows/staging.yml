@@ -1,14 +1,17 @@
-name: Expo Publish
-on: [pull_request]
+name: Expo Publish on Staging
+on:
+  push:
+    branches:
+      - develop
 jobs:
   publish:
     name: Install and publish
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
-          node-version: 14.x
+          node-version: 12.x
       - uses: expo/expo-github-action@v5
         with:
           expo-version: 4.x
@@ -16,9 +19,7 @@ jobs:
           expo-cache: true
       - run: npm install
       - run: expo install
-      - run: expo publish --release-channel=pr-${{ github.event.number }}
+      - run: expo publish --release-channel staging
       - uses: unsplash/comment-on-pr@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
         with:
-          msg: Expo publish is ready for review, you can [see it here](https://expo.io/@numanarshad.dev/use-expo?release-channel=pr-${{ github.event.number }}).
+          msg: Expo publish is ready for review, you can [see it here](https://expo.io/@numanarshad.dev/projects/ReactNativeDemo).
