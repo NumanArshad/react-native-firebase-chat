@@ -18,5 +18,7 @@ jobs:
       - run: expo install
       - run: expo publish --release-channel staging
       - uses: unsplash/comment-on-pr@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
         with:
           msg: Expo publish is ready for review, you can [see it here](https://expo.io/@numanarshad.dev/projects/ReactNativeDemo).
