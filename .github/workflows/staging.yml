@@ -1,8 +1,8 @@
-name: Expo Publish on Production
+name: Expo Publish on Staging
 on:
   push:
     branches:
-      - master
+      - develop
 jobs:
   publish:
     name: Install and publish
@@ -15,8 +15,8 @@ jobs:
       - uses: expo/expo-github-action@v5
         with:
           expo-version: 1.x
-          expo-token: ${{ secrets.EXPO_CLI_TOKEM }}
+          expo-token: ${{ secrets.EXPO_CLI_TOKEN }}
           expo-cache: true
       - run: npm install
       - run: expo install
-      - run: expo publish --release-channel production
+      - run: expo publish --release-channel staging
