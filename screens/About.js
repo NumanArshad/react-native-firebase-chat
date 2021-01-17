@@ -155,7 +155,7 @@ alert(JSON.stringify(url))
       <Button title="Add Firetore" onPress={handleAddFirestore} />
       <Button title="Pick image" onPress={handleImagePicker} />
       <Button title="Upload image" onPress={uploadImage} />
-
+   hey pull request
       <Button
         title="back to home"
         onPress={() => navigation.navigate("home")}
